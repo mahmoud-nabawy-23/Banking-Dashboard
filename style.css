@@ -1249,10 +1249,16 @@ aside .down ul li:hover {
   background-color: #372AAC;
   border-radius: 15px;
   width: 100%;
+  overflow: hidden;
   position: relative;
 }
-.payment .visas .visa:first-child::after {
-  content: "أساسية";
+.payment .visas .visa:nth-child(2) {
+  background-color: #C60036;
+}
+.payment .visas .visa:nth-child(3) {
+  background-color: #193CB8;
+}
+.payment .visas .visa .primary {
   position: absolute;
   top: 10px;
   left: 20px;
@@ -1268,6 +1274,10 @@ aside .down ul li:hover {
   flex-direction: column;
   transition: .3s;
   gap: 10px;
+}
+.payment .visas .visa .front-card, 
+.payment .visas .visa .back-card {
+  backface-visibility: hidden;
 }
 .payment .visas .visa .front-card .up {
   display: flex;
@@ -1290,6 +1300,29 @@ aside .down ul li:hover {
   border-radius: 7px;
   width: 28px;
   height: 18px;
+}
+.payment .visas .visa:nth-child(2) .front-card .up .right {
+  width: 50px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background-color: #D1335E;
+}
+
+.payment .visas .visa:nth-child(2) .front-card .up .right span {
+  background-color: #E3859E;
+  border-radius: 7px;
+  width: 28px;
+  height: 18px;
+}
+.payment .visas .visa:nth-child(3) .front-card .up .right {
+  background-color: #4763C6;
+}
+
+.payment .visas .visa:nth-child(3) .front-card .up .right span {
+  background-color: #91A1DD;
 }
 .payment .visas .visa .front-card .down {
   display: flex;
@@ -1315,4 +1348,104 @@ aside .down ul li:hover {
   color: #fff;
   font-size: 15px;
 }
+.payment .visas .visa .back-card {
+  display: flex;
+  position: absolute;
+  background: linear-gradient(to right, #071124, #0D1522);
+  inset: 0;
+  transition: .3s;
+  transform: rotateY(180deg);
+  width: 100%;
+  flex-direction: column;
+  padding: 20px;
+  color: #fff;
+}
+.payment .visas .visa .back-card .parcode {
+  background: linear-gradient(to right, #020202,#2B2B2B);
+  border-radius: 3px;
+  height: 50px;
+  margin-top: 5px;
+}
+.payment .visas .visa .back-card .label {
+  color: #888;
+  letter-spacing: 0px;
+  margin-top: 5px;
+  font-size: 12px;
+}
+.payment .visas .visa .back-card .pin {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  background-color: #fff;
+  margin-top: 5px;
+  border-radius: 3px;
+  color: #000;
+}
+.payment .visas .visa .back-card .pin .low {
+  height: 10px;
+  width: 80%;
+  background: linear-gradient(to right, gray, #eee,gray);
+}
+.payment .visas .visa .back-card .pin .last4 {
+  font-size: 13px;
+  font-weight: 500;
+}
+.payment .visas .visa .back-card .cvv {
+  display: flex;
+  margin-top: 5px;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+}
+.payment .visas .visa .back-card .cvv .up:first-child {
+  font-size: 10px;
+  color: #888;
+  font-weight: bold;
+}
+.payment .visas .visa .back-card .cvv .up:last-child {
+  padding: 8px 12px;
+  background-color: #fff;
+  color: #000;
+  font-weight: 400;
+  border-radius: 4px;
+}
+.payment .visas .visa .back-card .cvv .f {
+  flex: 1;
+}
+
+.payment .visas .visa:hover .front-card {
+  transform: rotateY(-180deg);
+}
+.payment .visas .visa:hover .back-card {
+  transform: rotateY(0deg);
+}
 /* End Payment  */
+
+/* Start Responsove */
+@media screen  and (max-width:768px){
+  .main-content{
+    grid-template-columns: auto;
+    grid-template-areas: 
+    "active"
+    "trans"
+    "bills"
+    "public"
+    "salary"
+    "summary"
+    "payment";
+  }
+}
+
+@media screen and (min-width:769px) and (max-width: 1030px) {
+  .main-content {
+    grid-template-columns: auto auto;
+    grid-template-areas: "active salary"
+    "trans trans"
+    "bills summary"
+    "public payment";
+  }
+  .salary {
+    height: auto;
+  }
+}
+/* End Responsove */
