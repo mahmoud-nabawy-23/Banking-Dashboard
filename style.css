@@ -1448,4 +1448,12 @@ aside .down ul li:hover {
     height: auto;
   }
 }
+@media screen  and (max-width:460px){
+  .trans {
+    overflow-x: auto;
+  }
+  .trans table {
+    min-width: 650px;
+  }
+}
 /* End Responsove */
